@@ -1,15 +1,31 @@
 def BuscaBinaria():
-    select = int(input("Numero: "))
-    vetor = [1,2,3,4,5,6,7,8,9,10]
-    inicio = 0
-    meio = ((len(vetor))//2)
-
-    fim = vetor[(len(vetor)-1)]
-    print(meio)
+    import time
     
-    while inicio <= fim:
-        if select == vetor[meio]:
-            print("Elemento encontrado")
-        
+    vetor =[]
+    tamanho = int(input("quantidade de elementos: "))
+    for i in range (0, tamanho):
+        print("Elemento", i+1)
+        digito = int(input())
+        vetor.append(digito)
+    print(vetor)
+    select = int(input("Numero a Ser Buscado: "))
 
+    inicio = 0
+
+    fim = (len(vetor)-1)
+    t1 = time.time()
+    while inicio <= fim:
+        meio = ((inicio+fim)//2)
+        if select == vetor[meio]:
+            print("Elemento encontrado na posição: ", (meio+1))
+            break
+        if select < vetor[meio]:
+            fim = meio - 1
+        else:
+            inicio = meio + 1
+    tempoExec = time.time() - t1
+    print("Tempo de execução: {:.5f} segundos".format(tempoExec))
+
+        
+        
 BuscaBinaria()
